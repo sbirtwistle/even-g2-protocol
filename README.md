@@ -2,6 +2,12 @@
 
 I have been reverse engineering the Even Realities G2 smart glasses BLE protocol. If you are interersted in joining this effort, please do!
 
+## What the hell does that even mean???
+
+The G2 glasses use a custom protocol created by EvenRealities. This BLE (bluetooth) protocol is used to transmit data in packets to and from the glasses. Currently, the G2 glasses are restricted to the functionality offered in the Even app - reverse engineering the BLE protocol removes this restriction.
+
+
+
 ## Status
 
 | Feature | Status | Notes |
