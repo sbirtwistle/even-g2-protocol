@@ -1,6 +1,6 @@
 # Even Realities G2 Smart Glasses - Protocol Documentation
 
-Community-driven reverse engineering of the Even Realities G2 smart glasses BLE protocol.
+I have been reverse engineering the Even Realities G2 smart glasses BLE protocol. If you are interersted in joining this effort, please do!
 
 ## Status
 
