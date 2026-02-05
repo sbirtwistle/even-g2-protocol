@@ -63,7 +63,7 @@ Open an issue if you:
 | Navigation | Documented | Full protocol mapped (see docs/navigation.md) |
 | Notifications | Documented | ANCS-like format (see docs/notifications.md) |
 | Gestures | Documented | Tap, swipe, long press (see docs/gestures.md) |
-| Even AI | Cracked! | 6402 rendering stream captured, needs decoding |
+| Even AI | Working | Custom Q&A display (see docs/even-ai.md) |
 | Translation | Unknown | Language encoding |
 | Service 1001 | Unknown | Purpose and protocol TBD |
 | Service 7450 | Unknown | Purpose and protocol TBD |

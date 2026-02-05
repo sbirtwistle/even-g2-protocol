@@ -17,7 +17,7 @@ The G2 glasses use a custom protocol created by EvenRealities. This BLE (bluetoo
 | Notifications | Documented | Full ANCS-like format with actions |
 | Gestures | Documented | Tap, swipe, long press detection |
 | Navigation | Documented | Turn-by-turn with protobuf mapping |
-| Even AI | Cracked! | Protocol identified, 6402 traffic captured |
+| Even AI | Working | Custom Q&A display confirmed |
 | Firmware/DFU | Documented | Nordic nRF52840, standard DFU protocol |
 | Service 1001 | Unknown | Control/Auth channel discovered |
 | Service 7450 | Unknown | Purpose TBD |
@@ -49,6 +49,8 @@ Line three"
 - [Capture Analysis](docs/capture-analysis.md) - Raw BLE capture research notes
 - [Firmware Protocol](docs/firmware-protocol.md) - DFU architecture and update mechanism
 - [Firmware Format](docs/firmware-format.md) - Binary format specification
+- [Even AI Protocol](docs/even-ai.md) - Custom Q&A display implementation
+- [R1 Ring Analysis](docs/R1_ANALYSIS.md) - Even R1 ring BLE protocol
 
 ## Protocol Files
 
@@ -58,6 +60,12 @@ Line three"
 ## Tools
 
 - [tools/extract_firmware.py](tools/extract_firmware.py) - Firmware package extraction and analysis
+
+## Examples
+
+- [examples/teleprompter/](examples/teleprompter/) - Display custom text on glasses
+- [examples/even-ai/](examples/even-ai/) - Custom Q&A on Even AI card
+- [examples/notif/](examples/notif/) - Push notifications to glasses
 
 ## Key Findings
 
@@ -118,9 +126,9 @@ Pull requests welcome! Areas needing research:
 - Service 7450 purpose and protocol
 
 **In Progress:**
-- Navigation turn-by-turn protocol
-- Even AI request/response format
+
 - Translation feature
+- R1 Ring full protocol mapping
 
 ## Credits
 
