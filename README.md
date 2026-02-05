@@ -18,6 +18,7 @@ The G2 glasses use a custom protocol created by EvenRealities. This BLE (bluetoo
 | Gestures | Documented | Tap, swipe, long press detection |
 | Navigation | Documented | Turn-by-turn with protobuf mapping |
 | Even AI | Cracked! | Protocol identified, 6402 traffic captured |
+| Firmware/DFU | Documented | Nordic nRF52840, standard DFU protocol |
 | Service 1001 | Unknown | Control/Auth channel discovered |
 | Service 7450 | Unknown | Purpose TBD |
 
@@ -46,11 +47,17 @@ Line three"
 - [Gestures Protocol](docs/gestures.md) - Tap, swipe, long press detection
 - [Navigation Protocol](docs/navigation.md) - Turn-by-turn navigation
 - [Capture Analysis](docs/capture-analysis.md) - Raw BLE capture research notes
+- [Firmware Protocol](docs/firmware-protocol.md) - DFU architecture and update mechanism
+- [Firmware Format](docs/firmware-format.md) - Binary format specification
 
 ## Protocol Files
 
 - [proto/](proto/) - Protobuf definitions for payload encoding
 - [captures/](captures/) - Raw BLE capture files for analysis
+
+## Tools
+
+- [tools/extract_firmware.py](tools/extract_firmware.py) - Firmware package extraction and analysis
 
 ## Key Findings
 
