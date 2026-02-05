@@ -1,5 +1,8 @@
 # Even G2 Service IDs
 
+> **Note**: This document covers **protocol-level service IDs** within Content Channel (5450) packet payloads.
+> For **BLE-level GATT services** (1001, 5450, 6450, 7450), see [ble-uuids.md](ble-uuids.md).
+
 ## Service ID Format
 
 Service IDs are 2 bytes in the packet header (bytes 6-7):

@@ -61,5 +61,8 @@ Open an issue if you:
 | Feature | Status | What's Missing |
 |---------|--------|----------------|
 | Navigation | Unknown | Full protocol not captured |
-| Even AI | Cracked! | Request format unclear |
+| Even AI | Cracked! | 6402 rendering stream captured, needs decoding |
 | Translation | Unknown | Language encoding |
+| Service 1001 | Unknown | Purpose and protocol TBD |
+| Service 7450 | Unknown | Purpose and protocol TBD |
+| Rendering Channel (6402) | Captured | Data format differs from Content Channel, possibly encrypted |
