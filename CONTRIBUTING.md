@@ -60,9 +60,11 @@ Open an issue if you:
 
 | Feature | Status | What's Missing |
 |---------|--------|----------------|
-| Navigation | Unknown | Full protocol not captured |
+| Navigation | Documented | Full protocol mapped (see docs/navigation.md) |
+| Notifications | Documented | ANCS-like format (see docs/notifications.md) |
+| Gestures | Documented | Tap, swipe, long press (see docs/gestures.md) |
 | Even AI | Cracked! | 6402 rendering stream captured, needs decoding |
 | Translation | Unknown | Language encoding |
 | Service 1001 | Unknown | Purpose and protocol TBD |
 | Service 7450 | Unknown | Purpose and protocol TBD |
-| Rendering Channel (6402) | Captured | Data format differs from Content Channel, possibly encrypted |
+| Rendering Channel (6402) | Captured | Likely map/image data, format differs from Content Channel |

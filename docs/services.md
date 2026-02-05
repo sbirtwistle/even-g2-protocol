@@ -27,13 +27,17 @@ AA 21 01 0C 01 01 [hi] [lo] ...
 
 | Service ID | Name | Description |
 |------------|------|-------------|
+| `0x01-01` | Status | Gesture callbacks (tap, swipe) |
+| `0x04-01` | Notification Forward | Forward ANCS notifications to display |
 | `0x04-20` | Display Wake | Activate display |
 | `0x06-20` | Teleprompter | Text display, scripts |
 | `0x07-20` | Dashboard | Widget data |
+| `0x08-20` | Navigation | Turn-by-turn navigation |
 | `0x09-00` | Device Info | Version, firmware |
 | `0x0B-20` | Conversate | Speech transcription |
 | `0x0C-20` | Tasks | Todo list items |
 | `0x0D-00` | Configuration | Device settings |
+| `0x0D-01` | Long Press | Long press gesture, triggers Even AI |
 | `0x0E-20` | Display Config | Display parameters |
 | `0x11-20` | Conversate (alt) | Alternative conversate ID |
 | `0x20-20` | Commit | Confirm/commit changes |
@@ -83,6 +87,18 @@ Display configuration sent before content:
   [config]    Display parameters
 ```
 
+### 0x01-01 (Status/Gestures)
+
+Gesture callbacks from glasses to phone:
+
+```
+Tap:          320b...06 0801 1202 1001
+Swipe Fwd:    320d...08 0801 1204 0801 10XX
+Swipe Back:   320d...08 0801 1204 0802 10XX
+```
+
+See [gestures.md](gestures.md) for full documentation.
+
 ### 0x07-20 (Dashboard)
 
 Widget display (calendar, weather, etc.):
@@ -92,6 +108,34 @@ Widget display (calendar, weather, etc.):
 10-XX         msg_id
 1A-XX         Widget data
 ```
+
+### 0x08-20 (Navigation)
+
+Turn-by-turn navigation data:
+
+```
+08-07         State = active navigation
+2a-XX         Container (nested message)
+  08 04 12 XX   Distance ("86 m")
+  1a XX         Instruction ("Turn left")
+  22 XX         Time remaining ("7 min")
+  2a XX         Total distance ("701 m")
+  32 XX         ETA ("ETA: 13:07")
+  3a XX         Speed ("0.0 km/h")
+  40 XX         Icon type (01=left, 02=right)
+```
+
+See [navigation.md](navigation.md) for full documentation.
+
+### 0x0D-01 (Long Press)
+
+Long press gesture callback (triggers Even AI):
+
+```
+aa12XX0a01010d0108011a0408011003YYYY
+```
+
+See [gestures.md](gestures.md) for full documentation.
 
 ## Service Discovery
 

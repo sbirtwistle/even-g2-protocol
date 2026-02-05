@@ -14,9 +14,10 @@ The G2 glasses use a custom protocol created by EvenRealities. This BLE (bluetoo
 | Authentication | Working | 7-packet handshake sequence |
 | Teleprompter | Working | Custom text display confirmed |
 | Calendar Widget | Working | Display events on glasses |
-| Notifications | Partial | Metadata only (app + count) |
+| Notifications | Documented | Full ANCS-like format with actions |
+| Gestures | Documented | Tap, swipe, long press detection |
+| Navigation | Documented | Turn-by-turn with protobuf mapping |
 | Even AI | Cracked! | Protocol identified, 6402 traffic captured |
-| Navigation | Research | High display traffic observed |
 | Service 1001 | Unknown | Control/Auth channel discovered |
 | Service 7450 | Unknown | Purpose TBD |
 
@@ -40,7 +41,10 @@ Line three"
 - [BLE Services & UUIDs](docs/ble-uuids.md) - Complete characteristic mapping
 - [Packet Structure](docs/packet-structure.md) - Transport layer format
 - [Service Reference](docs/services.md) - All known service IDs
-- [Teleprompter Protocol](docs/teleprompter.md) - Text display implementation (Work in Progress)
+- [Teleprompter Protocol](docs/teleprompter.md) - Text display implementation
+- [Notifications Protocol](docs/notifications.md) - Full notification format with actions
+- [Gestures Protocol](docs/gestures.md) - Tap, swipe, long press detection
+- [Navigation Protocol](docs/navigation.md) - Turn-by-turn navigation
 - [Capture Analysis](docs/capture-analysis.md) - Raw BLE capture research notes
 
 ## Protocol Files

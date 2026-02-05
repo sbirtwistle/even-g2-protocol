@@ -131,6 +131,22 @@ The G2 glasses expose multiple BLE services following a consistent pattern:
 
 ---
 
+## ATT Handle Mapping
+
+ATT handles vary per connection, but typical mappings observed:
+
+| ATT Handle | UUID Suffix | Service | Purpose |
+|------------|-------------|---------|---------|
+| `0x0021` | N/A | ANCS-like | Notification data |
+| `0x0842` | 5401 | 5450 | Content Write |
+| `0x0844` | 5402 | 5450 | Content Notify |
+| `0x0864` | 6402 | 6450 | Rendering Notify (map data) |
+
+> **Note**: Handle `0x0021` is for ANCS-like notifications, separate from G2 custom services.
+> See [notifications.md](notifications.md) for the notification protocol.
+
+---
+
 ## Connection Parameters
 
 ```
