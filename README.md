@@ -20,7 +20,7 @@ The G2 glasses use a custom protocol created by EvenRealities. This BLE (bluetoo
 | Even AI | Working | Custom Q&A display confirmed |
 | Firmware/DFU | Documented | Nordic nRF52840, standard DFU protocol |
 | Service 1001 | Unknown | Control/Auth channel discovered |
-| Service 7450 | Unknown | Purpose TBD |
+| Service 7450 | Documented | File transfer for notifications |
 
 ## Quick Start
 
@@ -51,6 +51,7 @@ Line three"
 - [Firmware Format](docs/firmware-format.md) - Binary format specification
 - [Even AI Protocol](docs/even-ai.md) - Custom Q&A display implementation
 - [R1 Ring Analysis](docs/R1_ANALYSIS.md) - Even R1 ring BLE protocol
+- [Notification File Transfer](docs/notification-file-transfer.md) - Android-style push via Service 7450
 
 ## Protocol Files
 
@@ -121,9 +122,9 @@ From capture analysis:
 Pull requests welcome! Areas needing research:
 
 **High Priority:**
+
 - Rendering channel (6402) encryption/encoding
 - Service 1001 purpose and protocol
-- Service 7450 purpose and protocol
 
 **In Progress:**
 

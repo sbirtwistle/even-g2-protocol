@@ -66,5 +66,5 @@ Open an issue if you:
 | Even AI | Working | Custom Q&A display (see docs/even-ai.md) |
 | Translation | Unknown | Language encoding |
 | Service 1001 | Unknown | Purpose and protocol TBD |
-| Service 7450 | Unknown | Purpose and protocol TBD |
+| Service 7450 | Documented | File transfer protocol (see docs/notification-file-transfer.md) |
 | Rendering Channel (6402) | Captured | Likely map/image data, format differs from Content Channel |
