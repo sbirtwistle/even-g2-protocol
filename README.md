@@ -1,7 +1,8 @@
-# Even Realities G2 Smart Glasses - Protocol Documentation
+# Even Realities G2 Smart Glasses - Protocol Documentation, Examples, Flutter App and Custom AI Agent Selection.
 
 I cant take credit for any of this great work, this is my attempt to bring various bits together for testing and continued research. This the result of the work of several other amazing people, https://github.com/i-soxi, https://github.com/kqb, https://github.com/BBBradyH along with some of my own additions.
 Please be sure to visit the original branch and the various other forks which are referenced here.
+
 If I've failed to properly merge / credit your work, dont hesitate to inform me, it was not intentional and no credit was meant to be taken, Im likely just incompetant and made a dogs breakfast of things.
 
 
@@ -21,6 +22,7 @@ The G2 glasses use a custom protocol created by EvenRealities. This BLE (bluetoo
 | Gestures | Documented | Tap, swipe, long press detection |
 | Navigation | Documented | Turn-by-turn with protobuf mapping |
 | Even AI | Working | Custom Q&A display confirmed |
+| Flutter App (AI Chat Voice) | Working | Dual-arm connection required; CTRL(ENTER) on wake-up |
 | Firmware/DFU | Documented | Nordic nRF52840, standard DFU protocol |
 | Service 1001 | Unknown | Control/Auth channel discovered |
 | Service 7450 | Documented | File transfer for notifications |
@@ -72,6 +74,13 @@ A mobile app is available in [flutter_app/](flutter_app/) with:
 - **Teleprompter** - Display custom scrollable text
 - **AI Chat** - Query LLM AI (Claude, GPT-4, etc.) via OpenRouter and display Q&A on glasses
 - **BLE Capture** - Research mode for protocol analysis
+
+Recent Flutter app progress (Feb 2026):
+
+- **Dual-arm connection required** (right + left) for voice AI flow
+- **Right arm emits Even AI events** (wake/exit)
+- **CTRL(ENTER) on wake-up** keeps AI mode active for voice interactions
+- **Voice input uses phone mic**; chat history is intentionally hidden for now
 
 See [flutter_app/README.md](flutter_app/README.md) for setup instructions.
 
