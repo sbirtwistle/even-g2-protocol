@@ -182,8 +182,20 @@ def build_sync(seq: int, msg_id: int) -> bytes:
 # Text Formatting
 # =============================================================================
 
-def format_text(text: str, chars_per_line: int = 25, lines_per_page: int = 10) -> list:
-    """Format text into pages of wrapped lines"""
+def format_text(text: str, chars_per_line: int = 25, lines_per_page: int = 10,
+                max_text_bytes: int = None) -> list:
+    """
+    Format text into pages of wrapped lines.
+
+    Args:
+        text: Input text to format
+        chars_per_line: Characters per line (default 25 for Latin, use 12 for CJK)
+        lines_per_page: Lines per page (default 10)
+        max_text_bytes: Optional max UTF-8 bytes per page for payload validation
+
+    Returns:
+        List of page strings
+    """
     # Handle escaped newlines
     text = text.replace("\\n", "\n")
 
@@ -213,13 +225,33 @@ def format_text(text: str, chars_per_line: int = 25, lines_per_page: int = 10) -
     while len(wrapped) < lines_per_page:
         wrapped.append(" ")
 
-    # Split into pages
+    # Split into pages (with optional byte validation)
     pages = []
-    for i in range(0, len(wrapped), lines_per_page):
-        page_lines = wrapped[i:i + lines_per_page]
-        while len(page_lines) < lines_per_page:
-            page_lines.append(" ")
-        pages.append("\n".join(page_lines) + " \n")
+    i = 0
+    while i < len(wrapped):
+        page_lines = []
+        for j in range(lines_per_page):
+            if i + j < len(wrapped):
+                page_lines.append(wrapped[i + j])
+            else:
+                page_lines.append(" ")
+
+        page_text = "\n".join(page_lines) + " \n"
+
+        # Byte validation if max_text_bytes specified
+        if max_text_bytes:
+            page_bytes = ("\n" + page_text).encode('utf-8')
+            while len(page_bytes) > max_text_bytes and page_lines:
+                # Truncate last non-empty line until it fits
+                for k in range(len(page_lines) - 1, -1, -1):
+                    if len(page_lines[k]) > 1:
+                        page_lines[k] = page_lines[k][:-1]
+                        break
+                page_text = "\n".join(page_lines) + " \n"
+                page_bytes = ("\n" + page_text).encode('utf-8')
+
+        pages.append(page_text)
+        i += lines_per_page
 
     # Pad to minimum 14 pages
     while len(pages) < 14:

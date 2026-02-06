@@ -67,6 +67,7 @@ Line three"
 - [examples/teleprompter/](examples/teleprompter/) - Display custom text on glasses
 - [examples/even-ai/](examples/even-ai/) - Custom Q&A on Even AI card
 - [examples/notif/](examples/notif/) - Push notifications to glasses
+- [examples/llm-teleprompter/](examples/llm-teleprompter/) - Query LLM AI and display on glasses
 
 ## Key Findings
 
@@ -134,6 +135,7 @@ Pull requests welcome! Areas needing research:
 ## Credits
 
 - Protocol research by the Even Realities community
+- Azure OpenAI integration pattern from [flushpot1125/even-g2_PC](https://github.com/flushpot1125/even-g2_PC)
 
 ## Disclaimer
 
