@@ -49,6 +49,10 @@
 	<string>This app uses Bluetooth to connect to your Even G2 smart glasses and display text on them.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>This app uses Bluetooth to connect to your Even G2 smart glasses and display text on them.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone access is needed to capture your voice for AI queries when using the glasses.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition is used to transcribe your voice queries for the AI assistant.</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>This app uses local network to communicate with nearby devices.</string>
 	<key>NSBonjourServices</key>

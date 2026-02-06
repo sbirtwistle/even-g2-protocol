@@ -2,13 +2,24 @@
 
 **Service ID**: 0x07 (Service) / 0x0720 (Request Flag)
 **Status**: ✅ Working - Custom Q&A Confirmed
-**Last Updated**: January 2, 2026
+**Last Updated**: February 5, 2026
 
 ---
 
 ## Overview
 
 Even AI is the G2's voice assistant feature. We have successfully reverse engineered the protocol to display **custom questions and answers** without the Even app or Even's cloud service.
+
+## Flutter App Findings (Feb 2026)
+
+Recent testing in the Flutter app uncovered a few operational requirements and signals:
+
+- **Dual-arm connection required**: The official app requires both arms connected; we mirror this and see consistent voice flow only with both arms connected.
+- **Right arm emits Even AI events**: Wake/exit events arrive from the right arm during voice interaction.
+- **Response service IDs**: Even AI responses arrive on **0x0700** and **0x0701** (both observed).
+- **CTRL ENTER on wake-up**: After a WAKE_UP event, the app must send **CTRL(ENTER)** to keep AI mode active and allow voice flow to proceed.
+
+These changes enabled real-time voice interaction with the assistant (transcription + answers on glasses).
 
 ### Service IDs
 
@@ -34,6 +45,8 @@ The **minimum working sequence** to display custom Q&A:
 ```
 
 **Key Discovery**: The `CTRL(ENTER)` command is **required** before ASK/REPLY will display. Without it, the glasses ignore AI commands.
+
+**Voice Flow Note**: For live voice input, sending `CTRL(ENTER)` immediately after WAKE_UP keeps AI mode active and allows the phone to run speech recognition.
 
 ---
 
@@ -319,6 +332,102 @@ VAD_START: User starts speaking
 VAD_END: User stops speaking
 VAD_TIMEOUT: No speech detected
 ```
+
+---
+
+## Voice Input Implementation
+
+### Architecture
+
+The G2 glasses do **not** stream audio over BLE. Instead, voice input works as follows:
+
+```
+┌─────────────────────┐
+│  G2 Glasses         │
+│  (VAD Detection)    │
+└──────────┬──────────┘
+           │ BLE: VAD events
+           ▼
+┌─────────────────────┐
+│  Phone              │
+│  (Audio Recording)  │
+│  (Speech-to-Text)   │
+└──────────┬──────────┘
+           │ BLE: ASK/REPLY
+           ▼
+┌─────────────────────┐
+│  G2 Glasses         │
+│  (Display Q&A)      │
+└─────────────────────┘
+```
+
+### Voice Flow
+
+1. **Wake**: User says "Hey Even" or long-presses temple
+   - Glasses send `CTRL(status=1)` (WAKE_UP)
+
+2. **VAD Start**: Glasses detect user speaking
+   - Glasses send `VAD_INFO(vadStatus=1)` (VAD_START)
+   - Phone begins audio recording + speech recognition
+
+3. **VAD End**: Glasses detect silence
+   - Glasses send `VAD_INFO(vadStatus=2)` (VAD_END)
+   - Phone stops recording, finalizes transcription
+
+4. **Query**: Phone sends transcribed text
+   - Phone sends `ASK(text="user question")`
+   - Phone queries LLM (Claude, GPT-4, etc.)
+
+5. **Response**: Phone displays answer
+   - Phone sends `REPLY(text="AI answer")`
+
+### VAD Packet Format
+
+VAD events come from the glasses on service `0x07-00`:
+
+```
+Transport Header (8 bytes):
+[AA] [12] [seq] [len] [01] [01] [07] [00]
+
+Protobuf Payload:
+08 02                - commandId: VAD_INFO (2)
+10 XX                - magicRandom
+22 XX                - vadInfo field (field 4)
+  08 XX              - vadStatus (1=START, 2=END, 3=TIMEOUT)
+
+CRC (2 bytes):
+[crc_lo] [crc_hi]
+```
+
+### CTRL Status Events
+
+CTRL events indicate AI mode state changes:
+
+| Status | Name    | Meaning               |
+|--------|---------|-----------------------|
+| 1      | WAKE_UP | "Hey Even" detected   |
+| 2      | ENTER   | Entered AI mode       |
+| 3      | EXIT    | Exited AI mode        |
+
+### Phone-Side Speech Recognition
+
+Since audio doesn't stream from glasses, the phone must:
+
+1. Use its own microphone for audio capture
+2. Perform speech-to-text locally or via cloud API
+3. Send the transcribed text to glasses via ASK packet
+
+**Recommended approach:**
+- iOS: Native Speech framework
+- Android: Android SpeechRecognizer
+- Cross-platform: `speech_to_text` Flutter package
+
+### Implementation Notes
+
+- VAD events require glasses to be in AI mode
+- Phone should start listening immediately on VAD_START
+- Keep recording until VAD_END or timeout
+- Incremental transcription updates are optional but improve UX
 
 ### Config Settings
 
