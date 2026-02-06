@@ -1,6 +1,9 @@
 # Even Realities G2 Smart Glasses - Protocol Documentation
 
-I have been reverse engineering the Even Realities G2 smart glasses BLE protocol. If you are interested in joining this effort, please do!
+I cant take credit for any of this great work, this is my attempt to bring various bits together for testing and continued research. This the result of the work of several other amazing people, https://github.com/i-soxi, https://github.com/kqb, https://github.com/BBBradyH along with some of my own additions.
+Please be sure to visit the original branch and the various other forks which are referenced here.
+If I've failed to properly merge / credit your work, dont hesitate to inform me, it was not intentional and no credit was meant to be taken, Im likely just incompetant and made a dogs breakfast of things.
+
 
 ## What the hell does that even mean???
 
