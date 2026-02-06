@@ -1,6 +1,6 @@
 # Even Realities G2 Smart Glasses - Protocol Documentation, Examples, Flutter App and Custom AI Agent Selection.
 
-I dont take credit for any of the excellent foundation work and research, this is my just my attempt to bring various bits together for testing, continued research and proof of concept. This the result of the work of several other amazing people, https://github.com/i-soxi, https://github.com/kqb, https://github.com/BBBradyH along with some of my own additions.
+I dont take credit for any of the excellent foundation work and research, this is my just my attempt to bring various bits together for testing, continued research and proof of concept. This the result of the work of several other amazing people, https://github.com/i-soxi, https://github.com/kqb, https://github.com/BBBradyH, https://github.com/flushpot1125 along with some of my own additions.
 
 Please be sure to visit the original branch and the various other forks which are referenced here.
 
