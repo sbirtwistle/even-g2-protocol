@@ -65,7 +65,17 @@ Line three"
 
 - [tools/extract_firmware.py](tools/extract_firmware.py) - Firmware package extraction and analysis
 
-## Examples
+## Flutter App
+
+A mobile app is available in [flutter_app/](flutter_app/) with:
+
+- **Teleprompter** - Display custom scrollable text
+- **AI Chat** - Query LLM AI (Claude, GPT-4, etc.) via OpenRouter and display Q&A on glasses
+- **BLE Capture** - Research mode for protocol analysis
+
+See [flutter_app/README.md](flutter_app/README.md) for setup instructions.
+
+## Python Examples
 
 - [examples/teleprompter/](examples/teleprompter/) - Display custom text on glasses
 - [examples/even-ai/](examples/even-ai/) - Custom Q&A on Even AI card

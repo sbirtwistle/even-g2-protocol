@@ -395,6 +395,20 @@ With this protocol, possible to:
 
 ---
 
+## Implementations
+
+### Python
+
+- [examples/even-ai/](../examples/even-ai/) - Direct Q&A display
+- [examples/llm-teleprompter/](../examples/llm-teleprompter/) - LLM integration (OpenAI, Claude, Ollama)
+
+### Flutter
+
+- [flutter_app/](../flutter_app/) - Mobile app with AI Chat feature
+  - Supports OpenRouter (Claude, GPT-4, Gemini, Llama)
+  - Chat-style UI with conversation history
+  - Secure API key storage
+
 ## See Also
 
 - [Service IDs](services.md) - Complete service listing
